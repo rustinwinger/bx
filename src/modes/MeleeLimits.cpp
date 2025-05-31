@@ -21,37 +21,37 @@
 #define MELEE_RIM_RAD2 6858/*if x^2+y^2 >= this, it's past the rim and 7ms*/
 #define MELEE_RIM_RAD3 8979/*if x^2+y^2 >= this, it's past the rim and 8ms*/
 
-#define TRAVELTIME_EASY1 6//ms
-#define TRAVELTIME_EASY2 7//ms
-#define TRAVELTIME_EASY3 8//ms for 112+cubic it takes 83% to get to dash, for 80+linear it takes 80% to get to dash
-#define TRAVELTIME_CROSS 12//ms to cross gate; unused
-#define TRAVELTIME_INTERNAL 12//ms for "easy" to "internal"; 2/3 frame
-#define TRAVELTIME_SLOW 88//(5.5*16)//ms for tap SDI nerfing, 5.5 frames
+#define TRAVELTIME_EASY1 1//ms
+#define TRAVELTIME_EASY2 1//ms
+#define TRAVELTIME_EASY3 1//ms for 112+cubic it takes 83% to get to dash, for 80+linear it takes 80% to get to dash
+#define TRAVELTIME_CROSS 1//ms to cross gate; unused
+#define TRAVELTIME_INTERNAL 1//ms for "easy" to "internal"; 2/3 frame
+#define TRAVELTIME_SLOW 1//(5.5*16)//ms for tap SDI nerfing, 5.5 frames
 
 #define TIMELIMIT_DOWNUP (16*3*250)//units of 4us; how long after a crouch to upward input should it begin a jump?
 #define JUMP_TIME (16*2*250)//units of 4us; after a recent crouch to upward input, always hold full up for 2 frames
 
-#define TIMELIMIT_FRAME 4167//(16.66...*250)//units of 4us; 1 frame, for reference
-#define TIMELIMIT_HALFFRAME 2083//(8.33...*250)//units of 4us; 1/2 frame
-#define TIMELIMIT_DEBOUNCE 1500//(6*250)//units of 4us; 6ms;
-#define TIMELIMIT_SIMUL 500//(2*250)//units of 4us; 2ms: if the latest inputs are less than 2 ms apart then don't nerf cardiag
+#define TIMELIMIT_FRAME 1//(16.66...*250)//units of 4us; 1 frame, for reference
+#define TIMELIMIT_HALFFRAME 1//(8.33...*250)//units of 4us; 1/2 frame
+#define TIMELIMIT_DEBOUNCE 1//(6*250)//units of 4us; 6ms;
+#define TIMELIMIT_SIMUL 1//(2*250)//units of 4us; 2ms: if the latest inputs are less than 2 ms apart then don't nerf cardiag
 
-#define TIMELIMIT_TAPSHUTOFF 16000//4 frames for tap jump shutoff
+#define TIMELIMIT_TAPSHUTOFF 1//4 frames for tap jump shutoff
 
 //not used #define TIMELIMIT_DASH 60000//(16*15*250)//units of 4us; last dash time prior to a pivot input; 15 frames
 
 //not used #define TIMELIMIT_QCIRC 24000//(16*6*250)//units of 4us; 6 frames
 
-#define TIMELIMIT_TAP 22000//(16*5.5*250)//units of 4us; 5.5 frames
-#define TIMELIMIT_TAP_PLUS 34000//(16*8.5*250)//units of 4us; 3 additional frames
+#define TIMELIMIT_TAP 1//(16*5.5*250)//units of 4us; 5.5 frames
+#define TIMELIMIT_TAP_PLUS 1//(16*8.5*250)//units of 4us; 3 additional frames
 
-#define TIMELIMIT_CARDIAG 32000//(16*8*250)//units of 4us; 8 frames
+#define TIMELIMIT_CARDIAG 1//(16*8*250)//units of 4us; 8 frames
 
-#define TIMELIMIT_WANK 22000//(16*5.5*250)//units of 4us; 5.5 frames
+#define TIMELIMIT_WANK 1//(16*5.5*250)//units of 4us; 5.5 frames
 
-#define TIMELIMIT_PIVOTTILT 32000//(16*8*250)//units of 4us; 8 frames
+#define TIMELIMIT_PIVOTTILT 1//(16*8*250)//units of 4us; 8 frames
 
-#define TIMELIMIT_SDI_COUNTDOWN 16000//(16*4*250)//units of 4us; 4 frames
+#define TIMELIMIT_SDI_COUNTDOWN 1//(16*4*250)//units of 4us; 4 frames
 
 enum pivotdir{P_None, P_Leftright, P_Rightleft};
 enum travelType{T_Lin, T_Quad, T_Cubic, T_Quart, T_Delay};
