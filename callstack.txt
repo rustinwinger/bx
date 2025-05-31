@@ -1,0 +1,52 @@
+
+>config/platform/config.cpp
+    loop()
+        backends->sendReport()
+            >HAL/pico/src/comms/GamecubeBackend.cpp
+            sendReport()
+                _gamecube->WaitForPollStart()                   main waiting period for pico
+                    >joybus-pio/src/GamecubeConsole.cpp
+                    WaitForPollStart()
+                ScanInputs()                                    button input reading
+                UpdateOutputs()                                 button input -> coordinate out
+                _gamecube->WaitForPollEnd()                     brief waiting for pico
+                    >joybus-pio/src/GamecubeConsole.cpp
+                    WaitForPollEnd()
+                _gamecube->SendReport
+                    >joybus-pio/src/GamecubeConsole.cpp
+                    SendReport()
+            >HAL/avr/src/comms/GamecubeBackend.cpp
+            sendReport()
+                ScanInputs()                                    button input reading
+                UpdateOutputs()                                 button input -> coordinate out
+                _gamecube->write(_data)
+                    >nicohoodNintendo/src/GamecubeAPI.hpp
+                    write()                                     brief waiting period for avr
+                        gc_write()
+                            >nicohoodNintendo/src/Gamecube.c
+                            gc_write()
+                                gc_n64_get()
+                                    >nicohoodNintendo/src/Gamecube_N64.c
+                                    gc_n64_get()
+                                        [a bunch of assembly that waits for a poll]
+                delayMicroseconds()                             main waiting period for avr
+
+Todo: modify the GamecubeBackend.cpp for each HAL
+
+So I need to have a startup period where I measure the exact polling interval (ScanInputs) without doing any extra work, at first.
+    1 second long?
+    measure both the minimum interval in microseconds and the average
+
+Then, I integer divide the polling interval and time more calls to ScanInputs and UpdateOutputs.
+
+I have to be done soon enough to wait for the incoming poll though.
+
+run:
+> ~/.platformio/penv/bin/pio run -c platformio.ini
+For arduino micro:
+> ~/.platformio/penv/bin/pio run -c platformio.ini -e arduino_micro --target upload
+For arduino mega:
+> ~/.platformio/penv/bin/pio run -c platformio.ini -e arduino_mega --target upload
+
+git tag -a test10 -m "angle preserving ftilt"
+git push origin <tagname>
